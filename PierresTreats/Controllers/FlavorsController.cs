@@ -55,12 +55,12 @@ namespace PierresTreats.Controllers
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
-            Flavor.User = currentUser;
+            flavor.User = currentUser;
             _db.Flavors.Add (flavor);
             _db.SaveChanges();
             if (TreatId != 0)
             {
-                _db.TreatFlavor.Add(new TreatFlavor(){ TreatId = TreatId, FlavorId = Flavor.FlavorId });
+                _db.TreatFlavor.Add(new TreatFlavor(){ TreatId = TreatId, FlavorId = flavor.FlavorId });
             }
             _db.SaveChanges();
             return RedirectToAction("Index");
