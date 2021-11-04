@@ -25,21 +25,13 @@ namespace PierresTreats.Controllers
             _userManager = userManager;
             _db = db;
         }
-
-        public async Task<ActionResult> Index(string searchString)
+        [AllowAnonymous]
+        public ActionResult Index(string searchString)
         {
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var currentUser = await _userManager.FindByIdAsync(userId);
-
-            IQueryable<Flavor> userFlavors =
-                _db
-                    .Flavors
-                    .Where(entry => entry.User.Id == currentUser.Id)
-                    .OrderBy(name => name.Name);
+            IQueryable<Flavor> userFlavors = _db.Flavors.OrderBy(name => name.Name);
             if (!string.IsNullOrEmpty(searchString))
             {
-                userFlavors =
-                    userFlavors
+                userFlavors = userFlavors
                         .Where(name => name.Name.Contains(searchString));
             }
             return View(userFlavors.ToList());
