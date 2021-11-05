@@ -17,31 +17,30 @@ namespace PierresTreats.Controllers
 
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public FlavorsController(
-            UserManager<ApplicationUser> userManager,
-            PierresTreatsContext db
-        )
+        public FlavorsController(UserManager<ApplicationUser> userManager, PierresTreatsContext db)
         {
             _userManager = userManager;
             _db = db;
         }
+
         [AllowAnonymous]
         public ActionResult Index(string searchString)
         {
             IQueryable<Flavor> userFlavors = _db.Flavors.OrderBy(name => name.Name);
             if (!string.IsNullOrEmpty(searchString))
             {
-                userFlavors = userFlavors
-                        .Where(name => name.Name.Contains(searchString));
+                userFlavors = userFlavors.Where(name => name.Name.Contains(searchString));
             }
             return View(userFlavors.ToList());
         }
+
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
             return View();
         }
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult> Create(Flavor flavor, int TreatId)
@@ -58,6 +57,7 @@ namespace PierresTreats.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         [AllowAnonymous]
         public ActionResult Details(int id)
         {
@@ -67,6 +67,7 @@ namespace PierresTreats.Controllers
                     .FirstOrDefault(flavor => flavor.FlavorId == id);
             return View(thisFlavor);
         }
+
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
@@ -74,6 +75,7 @@ namespace PierresTreats.Controllers
             ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
             return View(thisFlavor);
         }
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Edit(Flavor flavor, int TreatId)
@@ -86,6 +88,7 @@ namespace PierresTreats.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         [Authorize(Roles = "Admin")]
         public ActionResult AddTreat(int id)
         {
@@ -93,42 +96,41 @@ namespace PierresTreats.Controllers
             ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
             return View(thisFlavor);
         }
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult AddTreat(Flavor flavor, int TreatId)
         {
             if (TreatId != 0)
             {
-                _db .TreatFlavor
-                    .Add(new TreatFlavor()
-                    { TreatId = TreatId, FlavorId = flavor.FlavorId });
+                _db .TreatFlavor.Add(new TreatFlavor() { TreatId = TreatId, FlavorId = flavor.FlavorId });
             }
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
-            var thisFlavor =
-                _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+            var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
             return View(thisFlavor);
         }
+
         [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            var thisFlavor =
-                _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+            var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
             _db.Flavors.Remove (thisFlavor);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult DeleteTreat(int joinId)
         {
-            var joinEntry = _db.TreatFlavor
-                    .FirstOrDefault(entry => entry.TreatFlavorId == joinId);
+            var joinEntry = _db.TreatFlavor.FirstOrDefault(entry => entry.TreatFlavorId == joinId);
             _db.TreatFlavor.Remove (joinEntry);
             _db.SaveChanges();
             return RedirectToAction("Index");

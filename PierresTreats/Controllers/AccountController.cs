@@ -17,8 +17,7 @@ namespace PierresTreats.Controllers
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            PierresTreatsContext db
-        )
+            PierresTreatsContext db)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -43,7 +42,7 @@ namespace PierresTreats.Controllers
                 await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-              await _userManager.AddToRoleAsync(user, model.Role);
+                await _userManager.AddToRoleAsync(user, model.Role);
                 return RedirectToAction("Index");
             }
             else
