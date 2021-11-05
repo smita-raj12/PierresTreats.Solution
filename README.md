@@ -9,6 +9,8 @@ So this web application is use to built with user authentication and a many-to-m
 
 * A user should be able to navigate to a splash page that lists all treats and flavors. Users should be able to click on an individual treat or flavor to see all the treats/flavors that belong to it.
 
+* This application has separate roles for admins and logged-in users. Only admins should be able to add, update and delete. There is an order form that only logged-in users can access. A logged-in user should be able to create, read, update and delete their own order.
+
 ## Name of Author:
 
    _Smita_
@@ -49,11 +51,11 @@ Run `dotnet restore` in the git BASH terminal to install dependencies.
           }                                                                                
         }                                                                               
 
-6. Remove the {YOUR_USERNAME_NAME} and {YOUR_PASSWORD} and fill in the the code snippet with your username for MySQL, and MySQL password Do not include the curly brackets in your code snippet of appsettings.json
+5. Remove the {YOUR_USERNAME_NAME} and {YOUR_PASSWORD} and fill in the the code snippet with your username for MySQL, and MySQL password Do not include the curly brackets in your code snippet of appsettings.json
 
-7. Run "dotnet build" in the git BASH terminal to build, and run the project in the terminal. $ dotnet watch run
+6. Run "dotnet build" in the git BASH terminal to build, and run the project in the terminal. $ dotnet watch run
 
-8. View the website by visiting localhost:5000/ in a new web browser( such as google chrome) tab!
+7. View the website by visiting localhost:5000/ in a new web browser( such as google chrome) tab!
 
 
 ## Known bugs
