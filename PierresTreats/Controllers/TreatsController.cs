@@ -23,7 +23,7 @@ namespace PierresTreats.Controllers
       _userManager = userManager;
       _db = db;
     }
-      [AllowAnonymous]
+    [AllowAnonymous]
     public ActionResult Index(string searchString)
     {
       IQueryable<Treat> userTreats = _db.Treats.OrderBy(name => name.Name);

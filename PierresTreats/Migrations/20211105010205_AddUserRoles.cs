@@ -6,6 +6,7 @@ namespace PierresTreats.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            
             migrationBuilder.AddColumn<string>(
                 name: "UserId",
                 table: "Treats",
