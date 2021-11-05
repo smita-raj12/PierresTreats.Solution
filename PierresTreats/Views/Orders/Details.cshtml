@@ -1,0 +1,13 @@
+@model PierresTreats.Models.Order
+
+<h2>Order Details</h2>
+<hr />
+
+<h3>@Html.DisplayNameFor(model => model.TreatName): @Html.DisplayFor(model => model.TreatName)</h3>
+<h3>@Html.DisplayNameFor(model => model.FlavorName): @Html.DisplayFor(model => model.FlavorName)</h3>
+
+
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Edit Order", "Edit", new { id = Model.OrderId })</p>
+<p>@Html.ActionLink("Delete Order", "Delete", new { id = Model.OrderId })</p>

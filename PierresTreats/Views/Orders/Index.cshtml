@@ -1,0 +1,29 @@
+@using PierresTreats.Models;
+@model IEnumerable<PierresTreats.Models.Order>
+
+<h1>Orders for @User.Identity.Name</h1>
+
+@if (Model.Any())
+{
+  @using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")  
+        <input type="submit" value="Search" /></p>
+}
+
+  <ul>
+    @foreach (Order order in Model)
+    {
+      <li>@Html.ActionLink($"{order.TreatName}", "Details", new { id = order.OrderId })</li>
+    }
+  </ul>
+} 
+else
+{
+  <h3>No flavors have been added yet!</h3>
+}
+
+<p>@Html.ActionLink("Add new order", "Create")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
