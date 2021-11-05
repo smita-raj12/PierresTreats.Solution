@@ -2,15 +2,16 @@
 @model IEnumerable<PierresTreats.Models.Treat>
 
 <h1>Treatss for @User.Identity.Name</h1>
-@using (Html.BeginForm())
-{
-    <p>
-        Find by name: @Html.TextBox("SearchString")  
-        <input type="submit" value="Search" /></p>
-}
 
 @if (Model.Any())
 {
+  @using (Html.BeginForm())
+  {
+    <p>
+        Find by name: @Html.TextBox("SearchString")  
+        <input type="submit" value="Search" /></p>
+  }
+
   <ul>
     @foreach (Treat treat in Model)
     {

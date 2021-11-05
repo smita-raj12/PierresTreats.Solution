@@ -36,12 +36,13 @@ namespace PierresTreats.Controllers
             }
             return View(userFlavors.ToList());
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult> Create(Flavor flavor, int TreatId)
         {
@@ -57,6 +58,7 @@ namespace PierresTreats.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             var thisFlavor =_db.Flavors
@@ -65,13 +67,14 @@ namespace PierresTreats.Controllers
                     .FirstOrDefault(flavor => flavor.FlavorId == id);
             return View(thisFlavor);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
             ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
             return View(thisFlavor);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Edit(Flavor flavor, int TreatId)
         {
@@ -83,13 +86,14 @@ namespace PierresTreats.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult AddTreat(int id)
         {
             var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
             ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
             return View(thisFlavor);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult AddTreat(Flavor flavor, int TreatId)
         {
@@ -102,13 +106,14 @@ namespace PierresTreats.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             var thisFlavor =
                 _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
             return View(thisFlavor);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -118,7 +123,7 @@ namespace PierresTreats.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult DeleteTreat(int joinId)
         {

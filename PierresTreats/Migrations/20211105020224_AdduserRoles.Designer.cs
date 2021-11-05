@@ -9,8 +9,8 @@ using PierresTreats.Models;
 namespace PierresTreats.Migrations
 {
     [DbContext(typeof(PierresTreatsContext))]
-    [Migration("20211105010205_AddUserRoles")]
-    partial class AddUserRoles
+    [Migration("20211105020224_AdduserRoles")]
+    partial class AdduserRoles
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

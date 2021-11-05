@@ -2,15 +2,16 @@
 @model IEnumerable<PierresTreats.Models.Flavor>
 
 <h1>Flavors for @User.Identity.Name</h1>
-@using (Html.BeginForm())
+
+@if (Model.Any())
+{
+  @using (Html.BeginForm())
 {
     <p>
         Find by name: @Html.TextBox("SearchString")  
         <input type="submit" value="Search" /></p>
 }
 
-@if (Model.Any())
-{
   <ul>
     @foreach (Flavor flavor in Model)
     {
