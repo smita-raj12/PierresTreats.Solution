@@ -1,3 +1,7 @@
+@{
+  Layout = "_Layout";
+}
+
 @model PierresTreats.Models.Treat
 
 <h2>Edit</h2>
@@ -8,15 +12,17 @@
 
 @using (Html.BeginForm())
 {
-  @Html.HiddenFor(model => model.TreatId)
+  <div class = "container">
+    @Html.HiddenFor(model => model.TreatId)
 
-  @Html.LabelFor(model => model.Name)
-  @Html.EditorFor(model => model.Name)
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
 
-  @Html.Label("Select Flavor")
-  @Html.DropDownList("FlavorId")
+    @Html.Label("Select Flavor")
+    @Html.DropDownList("FlavorId")
 
-  <input type="submit" value="Save" />
+    <input type="submit" value="Save" />
+  </div>  
 }
 
 <p>@Html.ActionLink("Back to list", "Index")</p>

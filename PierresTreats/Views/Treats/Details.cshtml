@@ -1,3 +1,7 @@
+@{
+  Layout = "_Layout";
+}
+
 @model PierresTreats.Models.Treat
 
 <h2>Treats Details</h2>
@@ -12,17 +16,17 @@
 else
 {
   <h4>Flavors for this Treat:</h4>
-  <ul>
+
   @foreach(var join in Model.JoinEntities)
   {
-    <li>@join.Flavor.Name</li>
-    @using (Html.BeginForm("DeleteFlavor", "Flavors"))
+    <p>@join.Flavor.Name</p>
+    @using (Html.BeginForm("DeleteFlavor", "Treats"))
     {
       @Html.Hidden("joinId", @join.TreatFlavorId)
       <input type="submit" value="Delete"/>
     }
   }
-  </ul>
+  
 }
 
 <p>@Html.ActionLink("Add a flavor", "AddFlavor", new { id = Model.TreatId })</p>

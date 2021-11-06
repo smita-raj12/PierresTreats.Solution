@@ -1,16 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
 @model PierresTreats.Models.Order
 
 <h4>Add new Order</h4>
 
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.TreatName)
-  @Html.TextBoxFor(model => model.TreatName)
+  <div class = "container">
+    @Html.LabelFor(model => model.TreatName)
+    @Html.TextBoxFor(model => model.TreatName, new { @class = "text", type = "text", required = "required" })
 
-  @Html.LabelFor(model => model.FlavorName)
-  @Html.TextBoxFor(model => model.FlavorName)
+    @Html.LabelFor(model => model.FlavorName)
+    @Html.TextBoxFor(model => model.FlavorName, new { @class = "text", type = "text", required = "required" })
 
-  <input type="submit" value="Add new Order" class="btn btn-default" />
+    <input type="submit" value="Add new Order" class="btn btn-default" />
+  </div>
 }
 
 <p>@Html.ActionLink("Show all orders", "Index")</p>

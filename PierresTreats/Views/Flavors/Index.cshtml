@@ -1,3 +1,7 @@
+@{
+  Layout = "_Layout";
+}
+
 @using PierresTreats.Models;
 @model IEnumerable<PierresTreats.Models.Flavor>
 
@@ -13,12 +17,12 @@
     </p>
   }
 
-  <ul>
+  
     @foreach (Flavor flavor in Model)
     {
-      <li>@Html.ActionLink($"{flavor.Name}", "Details", new { id = flavor.FlavorId })</li>
+      <p>@Html.ActionLink($"{flavor.Name}", "Details", new { id = flavor.FlavorId })</p>
     }
-  </ul>
+  
 } 
 else
 {

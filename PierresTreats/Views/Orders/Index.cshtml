@@ -1,3 +1,7 @@
+@{
+  Layout = "_Layout";
+}
+
 @using PierresTreats.Models;
 @model IEnumerable<PierresTreats.Models.Order>
 
@@ -13,12 +17,11 @@
     </p>
   }
 
-  <ul>
+  
     @foreach (Order order in Model)
     {
-      <li>@Html.ActionLink($"{order.TreatName}", "Details", new { id = order.OrderId })</li>
+      <p>@Html.ActionLink($"{order.TreatName}", "Details", new { id = order.OrderId })</p>
     }
-  </ul>
 } 
 else
 {

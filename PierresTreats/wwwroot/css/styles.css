@@ -1,0 +1,50 @@
+body,html
+{
+  background-image: url("https://images.pexels.com/photos/8599569/pexels-photo-8599569.jpeg?cs=srgb&dl=pexels-polina-tankilevitch-8599569.jpg&fm=jpg");
+  background-repeat: no-repeat;
+  background-position: relative;
+  background-size: cover;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'El Messiri', sans-serif;
+  color: black;
+  text-shadow: 0.8px 0px rgb(255, 232, 181);
+  font-weight: bold;
+  text-align: center;
+}
+
+div#footer 
+{
+  position:fixed;
+  bottom:0px;
+  left:0px;
+  width:100%;
+  color:rgb(29, 28, 27);
+  background:rgb(179, 207, 207);
+  padding:8px;
+}
+
+h1
+{
+  padding-top: 30px;
+  color: brown;
+}
+
+h4
+{
+  padding-top: 30px;
+}
+
+.container
+{
+  padding-top: 30px;
+}
+
+h3
+{
+  color: coral;
+  padding-top: 20px;
+}

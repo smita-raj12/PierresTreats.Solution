@@ -1,15 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
 @model PierresTreats.Models.Treat
 
 <h4>Add a new Treat</h4>
 
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.Name)
-  @Html.TextBoxFor(model => model.Name)
+  <div class = "container">
+    @Html.LabelFor(model => model.Name, new { @class = "text", type = "text", required = "required" })
+    @Html.TextBoxFor(model => model.Name, new { @class = "text", type = "text", required = "required" })
 
-  @Html.Label("Select Flavor")
-  @Html.DropDownList("FlavorId")
+    @Html.Label("Select Flavor")
+    @Html.DropDownList("FlavorId")
 
-  <input type="submit" value="Add new treat" class="btn btn-default" />
+    <input type="submit" value="Add new treat" class="btn btn-default" />
+  </div>  
 }
 <p>@Html.ActionLink("Show all Treats", "Index")</p>
