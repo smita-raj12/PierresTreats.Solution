@@ -17,7 +17,7 @@ namespace PierresTreats.Controllers
 
     private readonly UserManager<ApplicationUser> _userManager;
     
-    public TreatsController(UserManager<ApplicationUser> userManager, PierresTreatsContext db)
+    public TreatsController( UserManager<ApplicationUser> userManager, PierresTreatsContext db)
     {
       _userManager = userManager;
       _db = db;

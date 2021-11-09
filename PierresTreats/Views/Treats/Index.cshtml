@@ -5,7 +5,7 @@
 @using PierresTreats.Models;
 @model IEnumerable<PierresTreats.Models.Treat>
 
-<h1>Treatss for @User.Identity.Name</h1>
+<h1>Treats for @User.Identity.Name</h1>
 
 @if (Model.Any())
 {
@@ -17,12 +17,10 @@
     </p>
   }
 
-  
     @foreach (Treat treat in Model)
     {
       <p>@Html.ActionLink($"{treat.Name}", "Details", new { id = treat.TreatId })</p>
     }
-  
 } 
 else
 {

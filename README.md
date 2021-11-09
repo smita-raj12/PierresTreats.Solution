@@ -53,7 +53,9 @@ Run `dotnet restore` in the git BASH terminal to install dependencies.
 
 5. Remove the {YOUR_USERNAME_NAME} and {YOUR_PASSWORD} and fill in the the code snippet with your username for MySQL, and MySQL password Do not include the curly brackets in your code snippet of appsettings.json
 
-6. Run "dotnet build" in the git BASH terminal to build, and run the project in the terminal. $ dotnet watch run
+6. Run  `dotnet ef database update`
+
+6. Run `dotnet build` in the git BASH terminal to build, and run the project in the terminal. $ dotnet watch run
 
 7. View the website by visiting localhost:5000/ in a new web browser( such as google chrome) tab!
 
